@@ -3,16 +3,16 @@ import React, {useState} from "react";
 
 const App = () => {
 
-  const [activated, setActivated] = useState(false)
-  const buttonText = activated ? 'Active' : 'Inactive'
-
-  const changeActive = ()=> {
-    setActivated(!activated)
+  const [count, setCount] = useState(0)
+  const handleClick = () => {
+    setCount(count + 1 )
   }
   return (
-      <button onClick = {changeActive} >
-        {buttonText}
-      </button>
+    <div>
+      <button onClick={handleClick}>Increase</button>
+      <h1>{count}</h1>
+    </div>
+     
     );
 }
 
