@@ -1,30 +1,36 @@
-import React, {useState} from "react";
-
+import React, { useState } from "react";
 
 const App = () => {
-  const [count, setCount] = useState(0)
+  const [state, setState] = useState({
+    city: "",
+    country: "",
+  });
 
-  const handleIncrease = () => {
-    setCount(count + 1)
-  }
-  const handleDecrease = () => {
-    setCount( count - 1)
+  const handleChangeCity = (event) => {
+    setState({
+      ...state, city: event.target.value
+    })
   }
 
-  const handleReset = () => {
-    setCount(0)
+  const handleChangeCountry = (event)=> {
+    setState({
+      ...state, country: event.target.value
+    })
   }
 
   return (
-    <div>
-      <button onClick= {handleIncrease} >Increase</button>
-      <button onClick= {handleDecrease} >Decrease</button>
-      <button onClick= {handleReset} >Reset</button>
 
-      <h1>{count}</h1>
-    </div>
-     
-    );
-}
+    <form>
+      <div>
+        <input type="text" placeholder="City" value={state.city} onChange={handleChangeCity} />
+      </div>
+      <div>
+        <input type="text" placeholder="Country" value={state.country} onChange={handleChangeCountry} />
+      </div>
+
+      <h1>I live in {`${state.city}, ${state.country}`} </h1>
+    </form>
+  );
+};
 
 export default App;
