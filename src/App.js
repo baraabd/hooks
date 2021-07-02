@@ -1,22 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
 
-
-const Box = (props) => {
-  return (
-    <div>
-     <h1>{props.text}</h1>
-     <h2>{props.subtitle}</h2>
-    </div>
-  )
-}
 
 const App = () => {
+
+  const [activated, setActivated] = useState(false)
+  const buttonText = activated ? 'Active' : 'Inactive'
+
+  const changeActive = ()=> {
+    setActivated(!activated)
+  }
   return (
-      <Box
-       text="Hello world"
-       subtitle="I love React"
-       />
+      <button onClick = {changeActive} >
+        {buttonText}
+      </button>
     );
 }
 
